@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Plans - Crowdmine Investment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>
+                <span>Crowdmine Investment</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="plans.html">Investment Plans</a></li>
+                <li><a href="deposit.html">Deposit</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html" class="btn-login">Login</a></li>
+                <li><a href="register.html" class="btn-register">Register</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Investment Plans</h1>
+            <p>All plans earn 32% returns - Choose the amount that fits your goals</p>
+        </div>
+    </section>
+
+    <section class="calculator-section">
+        <div class="container">
+            <div class="calculator-box">
+                <h2><i class="fas fa-calculator"></i> Calculate Your Returns</h2>
+                <input type="number" id="calcAmount" placeholder="Enter amount ($2,500+)" min="2500">
+                <button onclick="calculate()" class="btn btn-primary">Calculate 32% Return</button>
+                <div id="calcResult"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="plans-section">
+        <div class="container">
+            <h2>Basic Plan ($2,500 - $9,000)</h2>
+            <div class="plans-grid">
+                <div class="plan-card">
+                    <h3>$2,500</h3>
+                    <div class="plan-return">Returns: $3,300</div>
+                    <div class="plan-profit">Profit: $800</div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 32% ROI</li>
+                        <li><i class="fas fa-check"></i> Real-time dashboard</li>
+                        <li><i class="fas fa-check"></i> Automated trading</li>
+                    </ul>
+                    <a href="deposit.html" class="btn btn-primary">Invest Now</a>
+                </div>
+
+                <div class="plan-card">
+                    <h3>$3,000</h3>
+                    <div class="plan-return">Returns: $3,960</div>
+                    <div class="plan-profit">Profit: $960</div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 32% ROI</li>
+                        <li><i class="fas fa-check"></i> Real-time dashboard</li>
+                        <li><i class="fas fa-check"></i> Automated trading</li>
+                    </ul>
+                    <a href="deposit.html" class="btn btn-primary">Invest Now</a>
+                </div>
+
+                <div class="plan-card">
+                    <h3>$4,000</h3>
+                    <div class="plan-return">Returns: $5,280</div>
+                    <div class="plan-profit">Profit: $1,280</div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 32% ROI</li>
+                        <li><i class="fas fa-check"></i> Real-time dashboard</li>
+                        <li><i class="fas fa-check"></i> Automated trading</li>
+                    </ul>
+                    <a href="deposit.html" class="btn btn-primary">Invest Now</a>
+                </div>
+
+                <div class="plan-card">
+                    <h3>$5,000</h3>
+                    <div class="plan-return">Returns: $6,600</div>
+                    <div class="plan-profit">Profit: $1,600</div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 32% ROI</li>
+                        <li><i class="fas fa-check"></i> Real-time dashboard</li>
+                        <li><i class="fas fa-check"></i> Automated trading</li>
+                    </ul>
+                    <a href="deposit.html" class="btn btn-primary">Invest Now</a>
+                </div>
+
+                <div class="plan-card">
+                    <h3>$6,000</h3>
+                    <div class="plan-return">Returns: $7,920</div>
+                    <div class="plan-profit">Profit: $1,920</div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 32% ROI</li>
+                        <li><i class="fas fa-check"></i> Real-time dashboard</li>
+                        <li><i class="fas fa-check"></i> Automated trading</li>
+                    </ul>
+                    <a href="deposit.html" class="btn btn-primary">Invest Now</a>
+                </div>
+
+                <div class="plan-card">
+                    <h3>$7,000</h3>
+                    <div class="plan-return">Returns: $9,240</div>
+                    <div class="plan-profit">Profit: $2,240</div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 32% ROI</li>
+                        <li><i class="fas fa-check"></i> Real-time dashboard</li>
+                        <li><i class="fas fa-check"></i> Automated trading</li>
+                    </ul>
+                    <a href="deposit.html" class="btn btn-primary">Invest Now</a>
+                </div>
+
+                <div class="plan-card">
+                    <h3>$8,000</h3>
+                    <div class="plan-return">Returns: $10,560</div>
+                    <div class="plan-profit">Profit: $2,560</div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 32% ROI</li>
+                        <li><i class="fas fa-check"></i> Real-time dashboard</li>
+                        <li><i class="fas fa-check"></i> Automated trading</li>
+                    </ul>
+                    <a href="deposit.html" class="btn btn-primary">Invest Now</a>
+                </div>
+
+                <div class="plan-card">
+                    <h3>$9,000</h3>
+                    <div class="plan-return">Returns: $11,880</div>
+                    <div class="plan-profit">Profit: $2,880</div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 32% ROI</li>
+                        <li><i class="fas fa-check"></i> Real-time dashboard</li>
+                        <li><i class="fas fa-check"></i> Automated trading</li>
+                    </ul>
+                    <a href="deposit.html" class="btn btn-primary">Invest Now</a>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 4rem;">Platinum Plan ($10,000 - $100,000)</h2>
+            <div class="plans-grid">
+                <div class="plan-card platinum">
+                    <div class="badge">POPULAR</div>
+                    <h3>$10,000</h3>
+                    <div class="plan-return">Returns: $13,200</div>
+                    <div class="plan-profit">Profit: $3,200</div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 32% ROI</li>
+                        <li><i class="fas fa-check"></i> Priority support</li>
+                        <li><i class="fas fa-check"></i> Advanced analytics</li>
+                    </ul>
+                    <a href="deposit.html" class="btn btn-primary">Invest Now</a>
+                </div>
+
+                <div class="plan-card platinum">
+                    <h3>$20,000</h3>
+                    <div class="plan-return">Returns: $26,400</div>
+                    <div class="plan-profit">Profit: $6,400</div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 32% ROI</li>
+                        <li><i class="fas fa-check"></i> Priority support</li>
+                        <li><i class="fas fa-check"></i> Advanced analytics</li>
+                    </ul>
+                    <a href="deposit.html" class="btn btn-primary">Invest Now</a>
+                </div>
+
+                <div class="plan-card platinum">
+                    <h3>$30,000</h3>
+                    <div class="plan-return">Returns: $39,600</div>
+                    <div class="plan-profit">Profit: $9,600</div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 32% ROI</li>
+                        <li><i class="fas fa-check"></i> Priority support</li>
+                        <li><i class="fas fa-check"></i> Advanced analytics</li>
+                    </ul>
+                    <a href="deposit.html" class="btn btn-primary">Invest Now</a>
+                </div>
+
+                <div class="plan-card platinum">
+                    <h3>$50,000</h3>
+                    <div class="plan-return">Returns: $66,000</div>
+                    <div class="plan-profit">Profit: $16,000</div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 32% ROI</li>
+                        <li><i class="fas fa-check"></i> Priority support</li>
+                        <li><i class="fas fa-check"></i> Dedicated manager</li>
+                    </ul>
+                    <a href="deposit.html" class="btn btn-primary">Invest Now</a>
+                </div>
+
+                <div class="plan-card platinum">
+                    <div class="badge">VIP</div>
+                    <h3>$100,000</h3>
+                    <div class="plan-return">Returns: $132,000</div>
+                    <div class="plan-profit">Profit: $32,000</div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 32% ROI</li>
+                        <li><i class="fas fa-check"></i> VIP support 24/7</li>
+                        <li><i class="fas fa-check"></i> Exclusive strategies</li>
+                    </ul>
+                    <a href="deposit.html" class="btn btn-primary">Invest Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 Crowdmine Investment. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function calculate() {
+            const amount = parseFloat(document.getElementById('calcAmount').value);
+            if (amount < 2500) {
+                document.getElementById('calcResult').innerHTML = '<p style="color: #dc3545;">Minimum investment is $2,500</p>';
+                return;
+            }
+            const profit = amount * 0.32;
+            const total = amount + profit;
+            document.getElementById('calcResult').innerHTML = `
+                <div style="margin-top: 2rem; padding: 2rem; background: var(--dark-gray); border-radius: 10px; border: 2px solid var(--gold);">
+                    <h3 style="color: var(--gold);">Your Returns</h3>
+                    <p>Investment: <strong>$${amount.toLocaleString()}</strong></p>
+                    <p>Profit (32%): <strong style="color: #28a745;">$${profit.toLocaleString()}</strong></p>
+                    <p>Total Return: <strong style="color: var(--gold);">$${total.toLocaleString()}</strong></p>
+                    <a href="deposit.html" class="btn btn-primary" style="margin-top: 1rem; display: inline-block;">Start Investment</a>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
