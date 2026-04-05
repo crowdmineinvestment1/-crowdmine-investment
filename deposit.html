@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit Funds - Crowdmine Investment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>
+                <span>Crowdmine Investment</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="plans.html">Investment Plans</a></li>
+                <li><a href="deposit.html">Deposit</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html" class="btn-login">Login</a></li>
+                <li><a href="register.html" class="btn-register">Register</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-wallet"></i> Deposit Cryptocurrency</h1>
+            <p>All deposits go directly to our secure blockchain wallets</p>
+        </div>
+    </section>
+
+    <section class="deposit-notice">
+        <div class="container">
+            <div class="notice-box">
+                <i class="fas fa-info-circle"></i>
+                <h3>Important Information</h3>
+                <ul>
+                    <li>✅ All deposits processed automatically on blockchain</li>
+                    <li>✅ Funds go directly to our secure wallet</li>
+                    <li>✅ Investment begins after 1-3 confirmations</li>
+                    <li>✅ Submit transaction hash below after depositing</li>
+                    <li>⚠️ Send only specified cryptocurrency to each address</li>
+                    <li>⚠️ Minimum: $2,500 equivalent</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="crypto-wallets">
+        <div class="container">
+            <h2>Select Cryptocurrency</h2>
+
+            <!-- Bitcoin -->
+            <div class="wallet-card">
+                <div class="wallet-header">
+                    <i class="fab fa-bitcoin"></i>
+                    <h3>Bitcoin (BTC)</h3>
+                </div>
+                <div class="wallet-body">
+                    <p class="wallet-label">Deposit Address:</p>
+                    <div class="address-container">
+                        <code id="btc-addr">bc1qmefkuq5rrf76sc405uwakgz6lt4jz8074v25fx</code>
+                        <button onclick="copyAddress('btc-addr')" class="btn-copy">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                    <div class="qr-container">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=bc1qmefkuq5rrf76sc405uwakgz6lt4jz8074v25fx" alt="BTC QR">
+                    </div>
+                    <p class="warning">⚠️ Send only Bitcoin (BTC) to this address</p>
+                </div>
+            </div>
+
+            <!-- Ethereum -->
+            <div class="wallet-card">
+                <div class="wallet-header">
+                    <i class="fab fa-ethereum"></i>
+                    <h3>Ethereum (ETH)</h3>
+                </div>
+                <div class="wallet-body">
+                    <p class="wallet-label">Deposit Address:</p>
+                    <div class="address-container">
+                        <code id="eth-addr">0x08990e9af543f5c93b7dedddf63a02baf7405979</code>
+                        <button onclick="copyAddress('eth-addr')" class="btn-copy">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                    <div class="qr-container">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=0x08990e9af543f5c93b7dedddf63a02baf7405979" alt="ETH QR">
+                    </div>
+                    <p class="warning">⚠️ Send only Ethereum (ETH) and ERC-20 tokens</p>
+                </div>
+            </div>
+
+            <!-- Solana -->
+            <div class="wallet-card">
+                <div class="wallet-header">
+                    <i class="fas fa-sun"></i>
+                    <h3>Solana (SOL)</h3>
+                </div>
+                <div class="wallet-body">
+                    <p class="wallet-label">Deposit Address:</p>
+                    <div class="address-container">
+                        <code id="sol-addr">3MeYFAp99CCYmFFjbz1E4gXYuGYWia8AXHrJummYgdLt</code>
+                        <button onclick="copyAddress('sol-addr')" class="btn-copy">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                    <div class="qr-container">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=3MeYFAp99CCYmFFjbz1E4gXYuGYWia8AXHrJummYgdLt" alt="SOL QR">
+                    </div>
+                    <p class="warning">⚠️ Send only Solana (SOL) to this address</p>
+                </div>
+            </div>
+
+            <!-- USDT -->
+            <div class="wallet-card">
+                <div class="wallet-header">
+                    <i class="fas fa-dollar-sign"></i>
+                    <h3>USDT (ERC-20)</h3>
+                </div>
+                <div class="wallet-body">
+                    <p class="wallet-label">Deposit Address (ERC-20 Network):</p>
+                    <div class="address-container">
+                        <code id="usdt-addr">0x08990e9af543f5c93b7dedddf63a02baf7405979</code>
+                        <button onclick="copyAddress('usdt-addr')" class="btn-copy">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                    <div class="qr-container">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=0x08990e9af543f5c93b7dedddf63a02baf7405979" alt="USDT QR">
+                    </div>
+                    <p class="warning">⚠️ ERC-20 network only! Do not send TRC-20 or BEP-20</p>
+                </div>
+            </div>
+
+            <!-- USDC -->
+            <div class="wallet-card">
+                <div class="wallet-header">
+                    <i class="fas fa-coins"></i>
+                    <h3>USDC (ERC-20)</h3>
+                </div>
+                <div class="wallet-body">
+                    <p class="wallet-label">Deposit Address (ERC-20 Network):</p>
+                    <div class="address-container">
+                        <code id="usdc-addr">0x08990e9af543f5c93b7dedddf63a02baf7405979</code>
+                        <button onclick="copyAddress('usdc-addr')" class="btn-copy">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+                    <div class="qr-container">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=0x08990e9af543f5c93b7dedddf63a02baf7405979" alt="USDC QR">
+                    </div>
+                    <p class="warning">⚠️ ERC-20 network only!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="submit-transaction">
+        <div class="container">
+            <h2><i class="fas fa-paper-plane"></i> Submit Your Transaction</h2>
+            <p>After depositing, submit your transaction hash for verification</p>
+            
+            <form id="txForm" class="transaction-form">
+                <div class="form-group">
+                    <label>Cryptocurrency</label>
+                    <select id="crypto" required>
+                        <option value="">Select...</option>
+                        <option value="BTC">Bitcoin (BTC)</option>
+                        <option value="ETH">Ethereum (ETH)</option>
+                        <option value="SOL">Solana (SOL)</option>
+                        <option value="USDT">USDT (ERC-20)</option>
+                        <option value="USDC">USDC (ERC-20)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Transaction Hash / TX ID</label>
+                    <input type="text" id="txHash" placeholder="Paste transaction hash" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Investment Amount</label>
+                    <select id="amount" required>
+                        <option value="">Select plan amount...</option>
+                        <option value="2500">$2,500</option>
+                        <option value="3000">$3,000</option>
+                        <option value="4000">$4,000</option>
+                        <option value="5000">$5,000</option>
+                        <option value="6000">$6,000</option>
+                        <option value="7000">$7,000</option>
+                        <option value="8000">$8,000</option>
+                        <option value="9000">$9,000</option>
+                        <option value="10000">$10,000</option>
+                        <option value="20000">$20,000</option>
+                        <option value="30000">$30,000</option>
+                        <option value="50000">$50,000</option>
+                        <option value="100000">$100,000</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Your Email</label>
+                    <input type="email" id="email" placeholder="your@email.com" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-large">
+                    <i class="fas fa-check-circle"></i> Submit Transaction
+                </button>
+            </form>
+
+            <div id="result"></div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 Crowdmine Investment. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function copyAddress(id) {
+            const addr = document.getElementById(id).textContent;
+            navigator.clipboard.writeText(addr).then(() => {
+                alert('Address copied: ' + addr);
+            });
+        }
+
+        document.getElementById('txForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const crypto = document.getElementById('crypto').value;
+            const txHash = document.getElementById('txHash').value;
+            const amount = document.getElementById('amount').value;
+            const email = document.getElementById('email').value;
+
+            document.getElementById('result').innerHTML = `
+                <div style="margin-top: 2rem; padding: 2rem; background: #28a745; border-radius: 10px; text-align: center;">
+                    <i class="fas fa-check-circle" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                    <h3>Transaction Submitted Successfully!</h3>
+                    <p>Crypto: <strong>${crypto}</strong></p>
+                    <p>Amount: <strong>$${parseInt(amount).toLocaleString()}</strong></p>
+                    <p>TX Hash: <code>${txHash}</code></p>
+                    <p style="margin-top: 1rem;">We are verifying your transaction. You will receive confirmation at <strong>${email}</strong> once activated.</p>
+                    <a href="dashboard.html" class="btn btn-primary" style="margin-top: 1rem; display: inline-block;">Go to Dashboard</a>
+                </div>
+            `;
+            this.reset();
+        });
+    </script>
+</body>
+</html>
