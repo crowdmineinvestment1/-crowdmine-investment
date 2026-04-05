@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Crowdmine Investment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    
+    <nav class="dashboard-nav">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>
+                <span>Crowdmine Investment</span>
+            </div>
+            <div class="user-menu">
+                <span id="userName">John Doe</span>
+                <button onclick="logout()" class="btn-logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li class="active">
+                    <a href="dashboard.html">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="deposit.html">
+                        <i class="fas fa-wallet"></i>
+                        <span>Deposit</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="plans.html">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>Investment Plans</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html">
+                        <i class="fas fa-home"></i>
+                        <span>Back to Home</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="dashboard-main">
+            <div class="welcome-banner">
+                <h1>Welcome back! 👋</h1>
+                <p>Here's your investment overview</p>
+            </div>
+
+            <div class="balance-cards">
+                <div class="balance-card primary">
+                    <div class="card-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-label">Total Balance</p>
+                        <h2 class="card-value" id="totalBalance">$0.00</h2>
+                        <span class="card-subtext">Available funds</span>
+                    </div>
+                </div>
+
+                <div class="balance-card success">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-label">Total Invested</p>
+                        <h2 class="card-value" id="totalInvested">$0.00</h2>
+                        <span class="card-subtext">Active capital</span>
+                    </div>
+                </div>
+
+                <div class="balance-card warning">
+                    <div class="card-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-label">Total Profit</p>
+                        <h2 class="card-value" id="totalProfit">$0.00</h2>
+                        <span class="card-subtext positive">+32% ROI</span>
+                    </div>
+                </div>
+
+                <div class="balance-card info">
+                    <div class="card-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-label">Withdrawable</p>
+                        <h2 class="card-value" id="withdrawable">$0.00</h2>
+                        <span class="card-subtext">Ready to withdraw</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-chart-pie"></i> Active Investments</h3>
+                    <a href="deposit.html" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> New Investment
+                    </a>
+                </div>
+                <div id="investmentsList">
+                    <div class="empty-state">
+                        <i class="fas fa-inbox"></i>
+                        <p>No active investments yet</p>
+                        <a href="deposit.html" class="btn btn-primary">Make Your First Deposit</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <h3>Quick Actions</h3>
+                <div class="actions-grid">
+                    <a href="deposit.html" class="action-card">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>Make Deposit</span>
+                    </a>
+                    <a href="plans.html" class="action-card">
+                        <i class="fas fa-list-alt"></i>
+                        <span>View Plans</span>
+                    </a>
+                    <a href="index.html" class="action-card">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Check if user is logged in
+        const isLoggedIn = localStorage.getItem('isLoggedIn');
+        if (!isLoggedIn) {
+            alert('Please login to access dashboard');
+            window.location.href = 'login.html';
+        }
+
+        // Display user email
+        const userEmail = localStorage.getItem('userEmail');
+        if (userEmail) {
+            document.getElementById('userName').textContent = userEmail;
+        }
+
+        // Sample data - YOU CONTROL THESE VALUES
+        const userData = {
+            totalBalance: 15840.00,
+            totalInvested: 12000.00,
+            totalProfit: 3840.00,
+            withdrawable: 3840.00
+        };
+
+        // Display balances
+        document.getElementById('totalBalance').textContent = '$' + userData.totalBalance.toLocaleString();
+        document.getElementById('totalInvested').textContent = '$' + userData.totalInvested.toLocaleString();
+        document.getElementById('totalProfit').textContent = '$' + userData.totalProfit.toLocaleString();
+        document.getElementById('withdrawable').textContent = '$' + userData.withdrawable.toLocaleString();
+
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userEmail');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>
