@@ -143,38 +143,48 @@
     </div>
 
     <script>
-        // Check if user is logged in
-        const isLoggedIn = localStorage.getItem('isLoggedIn');
-        if (!isLoggedIn) {
-            alert('Please login to access dashboard');
-            window.location.href = 'login.html';
-        }
+    // Check if user is logged in
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    const userEmail = localStorage.getItem('userEmail');
+    
+    if (!isLoggedIn || !userEmail) {
+        alert('Please login to access dashboard');
+        window.location.href = 'login.html';
+    }
 
-        // Display user email
-        const userEmail = localStorage.getItem('userEmail');
-        if (userEmail) {
-            document.getElementById('userName').textContent = userEmail;
-        }
+    // Get user data from admin-controlled storage
+    function getUserData(email) {
+        const users = localStorage.getItem('crowdmineUsers');
+        if (!users) return null;
+        
+        const allUsers = JSON.parse(users);
+        return allUsers[email] || null;
+    }
 
-        // Sample data - YOU CONTROL THESE VALUES
-        const userData = {
-            totalBalance: 15840.00,
-            totalInvested: 12000.00,
-            totalProfit: 3840.00,
-            withdrawable: 3840.00
-        };
+    // Display user data
+    const userData = getUserData(userEmail);
 
-        // Display balances
+    if (userData) {
+        // User exists - show their real data
+        document.getElementById('userName').textContent = userData.name;
         document.getElementById('totalBalance').textContent = '$' + userData.totalBalance.toLocaleString();
         document.getElementById('totalInvested').textContent = '$' + userData.totalInvested.toLocaleString();
         document.getElementById('totalProfit').textContent = '$' + userData.totalProfit.toLocaleString();
         document.getElementById('withdrawable').textContent = '$' + userData.withdrawable.toLocaleString();
+    } else {
+        // New user - show $0.00
+        document.getElementById('userName').textContent = userEmail;
+        document.getElementById('totalBalance').textContent = '$0.00';
+        document.getElementById('totalInvested').textContent = '$0.00';
+        document.getElementById('totalProfit').textContent = '$0.00';
+        document.getElementById('withdrawable').textContent = '$0.00';
+    }
 
-        function logout() {
-            localStorage.removeItem('isLoggedIn');
-            localStorage.removeItem('userEmail');
-            window.location.href = 'login.html';
-        }
-    </script>
+    function logout() {
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('userEmail');
+        window.location.href = 'login.html';
+    }
+</script>
 </body>
 </html>
