@@ -308,4 +308,332 @@ footer {
         flex-direction: column;
         gap: 1rem;
     }
+}     
+/* Plans Page */
+.page-header {
+    background: var(--dark-gray);
+    padding: 60px 0;
+    text-align: center;
+    border-bottom: 3px solid var(--gold);
+}
+
+.page-header h1 {
+    color: var(--gold);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.calculator-section {
+    padding: 40px 0;
+    background: var(--black);
+}
+
+.calculator-box {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--dark-gray);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 2px solid var(--gold);
+    text-align: center;
+}
+
+.calculator-box input {
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem 0;
+    background: var(--light-gray);
+    border: 2px solid var(--text-gray);
+    border-radius: 5px;
+    color: var(--white);
+    font-size: 1rem;
+}
+
+.plans-section {
+    padding: 60px 0;
+    background: var(--black);
+}
+
+.plans-section h2 {
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.plan-card {
+    background: var(--dark-gray);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 2px solid var(--light-gray);
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s;
+}
+
+.plan-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--gold);
+}
+
+.plan-card.platinum {
+    border-color: var(--gold);
+    background: linear-gradient(135deg, var(--dark-gray) 0%, var(--light-gray) 100%);
+}
+
+.plan-card h3 {
+    font-size: 2.5rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+
+.plan-return {
+    font-size: 1.3rem;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+}
+
+.plan-profit {
+    font-size: 1.1rem;
+    color: #28a745;
+    margin-bottom: 1.5rem;
+}
+
+.plan-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+    text-align: left;
+}
+
+.plan-card li {
+    padding: 0.5rem 0;
+    color: var(--text-gray);
+}
+
+.plan-card .btn {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.badge {
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: var(--gold);
+    color: var(--black);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* Deposit Page */
+.deposit-notice {
+    padding: 40px 0;
+    background: var(--dark-gray);
+}
+
+.notice-box {
+    background: var(--light-gray);
+    padding: 2rem;
+    border-radius: 10px;
+    border-left: 5px solid var(--gold);
+}
+
+.notice-box i {
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+
+.notice-box h3 {
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+
+.notice-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.notice-box li {
+    padding: 0.5rem 0;
+    color: var(--text-gray);
+}
+
+.crypto-wallets {
+    padding: 60px 0;
+    background: var(--black);
+}
+
+.crypto-wallets h2 {
+    text-align: center;
+    color: var(--gold);
+    margin-bottom: 3rem;
+}
+
+.wallet-card {
+    background: var(--dark-gray);
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    border: 2px solid var(--light-gray);
+}
+
+.wallet-card:hover {
+    border-color: var(--gold);
+}
+
+.wallet-header {
+    background: var(--light-gray);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 2px solid var(--gold);
+}
+
+.wallet-header i {
+    font-size: 2rem;
+    color: var(--gold);
+}
+
+.wallet-header h3 {
+    color: var(--white);
+    margin: 0;
+}
+
+.wallet-body {
+    padding: 2rem;
+}
+
+.wallet-label {
+    color: var(--text-gray);
+    margin-bottom: 0.5rem;
+}
+
+.address-container {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    background: var(--black);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.address-container code {
+    flex: 1;
+    color: var(--gold);
+    font-size: 0.9rem;
+    word-break: break-all;
+}
+
+.btn-copy {
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-copy:hover {
+    background: var(--dark-gold);
+}
+
+.qr-container {
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+.qr-container img {
+    border: 3px solid var(--gold);
+    border-radius: 10px;
+    padding: 10px;
+    background: white;
+}
+
+.warning {
+    background: rgba(255, 193, 7, 0.1);
+    border-left: 4px solid #ffc107;
+    padding: 1rem;
+    color: #ffc107;
+    border-radius: 5px;
+}
+
+.submit-transaction {
+    padding: 60px 0;
+    background: var(--dark-gray);
+}
+
+.submit-transaction h2 {
+    text-align: center;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+
+.transaction-form {
+    max-width: 600px;
+    margin: 2rem auto;
+    background: var(--light-gray);
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 1rem;
+    background: var(--black);
+    border: 2px solid var(--text-gray);
+    border-radius: 5px;
+    color: var(--white);
+    font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--gold);
+}
+
+.btn-large {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .plans-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .address-container {
+        flex-direction: column;
+    }
+    
+    .address-container code {
+        font-size: 0.8rem;
+    }
 }
