@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Crowdmine Investment</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-body">
+    
+    <nav class="dashboard-nav">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-user-shield"></i>
+                <span>ADMIN PANEL</span>
+            </div>
+            <div class="user-menu">
+                <span style="color: #dc3545;">⚠️ ADMIN ACCESS</span>
+                <button onclick="adminLogout()" class="btn-logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li class="active">
+                    <a href="admin.html">
+                        <i class="fas fa-users"></i>
+                        <span>Manage Users</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="admin-deposits.html">
+                        <i class="fas fa-inbox"></i>
+                        <span>Pending Deposits</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html">
+                        <i class="fas fa-home"></i>
+                        <span>View Website</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="dashboard-main">
+            <div class="welcome-banner">
+                <h1><i class="fas fa-user-shield"></i> Admin Dashboard</h1>
+                <p>Manage all user accounts and balances</p>
+            </div>
+
+            <!-- Add New User or Update Existing -->
+            <div class="admin-card">
+                <h2><i class="fas fa-user-edit"></i> Update User Balance</h2>
+                <form id="updateUserForm" class="admin-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>User Email</label>
+                            <input type="email" id="userEmail" placeholder="user@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>User Name</label>
+                            <input type="text" id="userName" placeholder="John Doe" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Total Invested ($)</label>
+                            <input type="number" id="totalInvested" placeholder="0" min="0" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Total Profit ($) - YOU CONTROL THIS</label>
+                            <input type="number" id="totalProfit" placeholder="0" min="0" step="0.01" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Withdrawable Amount ($)</label>
+                            <input type="number" id="withdrawable" placeholder="0" min="0" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Total Balance ($)</label>
+                            <input type="number" id="totalBalance" placeholder="0" min="0" step="0.01" required>
+                        </div>
+                    </div>
+
+                    <button type="button" onclick="calculate32Percent()" class="btn btn-secondary">
+                        <i class="fas fa-calculator"></i> Auto-Calculate 32% Profit
+                    </button>
+
+                    <button type="submit" class="btn btn-primary btn-large">
+                        <i class="fas fa-save"></i> Save User Data
+                    </button>
+                </form>
+            </div>
+
+            <!-- All Users List -->
+            <div class="admin-card">
+                <h2><i class="fas fa-users"></i> All Users</h2>
+                <div id="usersList">
+                    <!-- Users will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Quick Profit Calculator -->
+            <div class="admin-card">
+                <h2><i class="fas fa-calculator"></i> Quick Profit Calculator</h2>
+                <div class="calculator-box">
+                    <label>Investment Amount:</label>
+                    <input type="number" id="quickCalc" placeholder="Enter amount">
+                    <button onclick="quickCalc()" class="btn btn-primary">Calculate 32% Profit</button>
+                    <div id="calcResult"></div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        // ============================================
+        // ADMIN CONTROL - STORE USER DATA
+        // ============================================
+
+        // Get all users from localStorage
+        function getAllUsers() {
+            const users = localStorage.getItem('crowdmineUsers');
+            return users ? JSON.parse(users) : {};
+        }
+
+        // Save user data
+        function saveUserData(email, data) {
+            const users = getAllUsers();
+            users[email] = data;
+            localStorage.setItem('crowdmineUsers', JSON.stringify(users));
+            alert('✅ User data saved successfully!');
+            loadAllUsers();
+        }
+
+        // Auto-calculate 32% profit
+        function calculate32Percent() {
+            const invested = parseFloat(document.getElementById('totalInvested').value) || 0;
+            const profit = invested * 0.32;
+            const total = invested + profit;
+            
+            document.getElementById('totalProfit').value = profit.toFixed(2);
+            document.getElementById('withdrawable').value = profit.toFixed(2);
+            document.getElementById('totalBalance').value = total.toFixed(2);
+        }
+
+        // Save user form submission
+        document.getElementById('updateUserForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('userEmail').value;
+            const name = document.getElementById('userName').value;
+            const invested = parseFloat(document.getElementById('totalInvested').value);
+            const profit = parseFloat(document.getElementById('totalProfit').value);
+            const withdrawable = parseFloat(document.getElementById('withdrawable').value);
+            const balance = parseFloat(document.getElementById('totalBalance').value);
+
+            const userData = {
+                name: name,
+                email: email,
+                totalInvested: invested,
+                totalProfit: profit,
+                withdrawable: withdrawable,
+                totalBalance: balance,
+                lastUpdated: new Date().toLocaleString()
+            };
+
+            saveUserData(email, userData);
+            this.reset();
+        });
+
+        // Load all users
+        function loadAllUsers() {
+            const users = getAllUsers();
+            const usersList = document.getElementById('usersList');
+            
+            if (Object.keys(users).length === 0) {
+                usersList.innerHTML = '<p style="text-align: center; color: var(--text-gray); padding: 2rem;">No users yet</p>';
+                return;
+            }
+
+            let html = '<div class="users-table">';
+            html += `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Invested</th>
+                            <th>Profit</th>
+                            <th>Balance</th>
+                            <th>Last Updated</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            for (let email in users) {
+                const user = users[email];
+                html += `
+                    <tr>
+                        <td>${user.name}</td>
+                        <td>${user.email}</td>
+                        <td>$${user.totalInvested.toLocaleString()}</td>
+                        <td style="color: #28a745;">$${user.totalProfit.toLocaleString()}</td>
+                        <td style="color: var(--gold);">$${user.totalBalance.toLocaleString()}</td>
+                        <td>${user.lastUpdated}</td>
+                        <td>
+                            <button onclick="editUser('${email}')" class="btn-sm btn-primary">Edit</button>
+                            <button onclick="deleteUser('${email}')" class="btn-sm btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                `;
+            }
+
+            html += '</tbody></table></div>';
+            usersList.innerHTML = html;
+        }
+
+        // Edit user
+        function editUser(email) {
+            const users = getAllUsers();
+            const user = users[email];
+            
+            document.getElementById('userEmail').value = user.email;
+            document.getElementById('userName').value = user.name;
+            document.getElementById('totalInvested').value = user.totalInvested;
+            document.getElementById('totalProfit').value = user.totalProfit;
+            document.getElementById('withdrawable').value = user.withdrawable;
+            document.getElementById('totalBalance').value = user.totalBalance;
+            
+            window.scrollTo(0, 0);
+        }
+
+        // Delete user
+        function deleteUser(email) {
+            if (confirm('Are you sure you want to delete this user?')) {
+                const users = getAllUsers();
+                delete users[email];
+                localStorage.setItem('crowdmineUsers', JSON.stringify(users));
+                loadAllUsers();
+                alert('User deleted!');
+            }
+        }
+
+        // Quick calculator
+        function quickCalc() {
+            const amount = parseFloat(document.getElementById('quickCalc').value);
+            if (!amount) return;
+            
+            const profit = amount * 0.32;
+            const total = amount + profit;
+            
+            document.getElementById('calcResult').innerHTML = `
+                <div style="margin-top: 1rem; padding: 1rem; background: var(--dark-gray); border-radius: 8px;">
+                    <p>Investment: <strong>$${amount.toLocaleString()}</strong></p>
+                    <p>32% Profit: <strong style="color: #28a745;">$${profit.toLocaleString()}</strong></p>
+                    <p>Total Return: <strong style="color: var(--gold);">$${total.toLocaleString()}</strong></p>
+                </div>
+            `;
+        }
+
+        // Admin logout
+        function adminLogout() {
+            localStorage.removeItem('adminLoggedIn');
+            window.location.href = 'admin-login.html';
+        }
+
+        // Check admin access
+        if (localStorage.getItem('adminLoggedIn') !== 'true') {
+            window.location.href = 'admin-login.html';
+        }
+
+        // Load users on page load
+        loadAllUsers();
+    </script>
+</body>
+</html>
